@@ -1,34 +1,58 @@
-# React + TypeScript + Vite
+# Book of notes
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Book of notes es una aplicación ligera para tomar y organizar apuntes de clase, centrada en la escritura rápida, la simplicidad y la edición de contenido matemático.
 
-Currently, two official plugins are available:
+**Descripción del proyecto**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Objetivo:** Permitir a estudiantes y docentes capturar ideas, fórmulas y fragmentos matemáticos durante las clases sin distracciones.
+- **Enfoque:** editor Markdown enriquecido con utilidades para ecuaciones, snippets matemáticos y organización por asignaturas.
 
-## React Compiler
+**Utilidades incluidas**
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- **Editor Markdown:** escritura rápida con atajos y vista previa.
+- **Snippets matemáticos:** fragmentos reutilizables para fórmulas y estructuras comunes (ver `src/utils/mathSnippets.ts`).
+- **Generador de slugs:** para URLs y rutas limpias (ver `src/utils/createSlug.ts`).
+- **Base de datos ligera:** integración con Drizzle para almacenar apuntes y consultas en `db/`.
+- **Componentes reutilizables:** área de texto enriquecida y layout base en `src/components/`.
 
-Note: This will impact Vite dev & build performances.
+**Cómo usarlo**
 
-## Expanding the Oxlint configuration
+1. Instalar dependencias:
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+pnpm install
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+2. Ejecutar en desarrollo:
+
+```bash
+pnpm dev
+```
+
+3. Abrir la app en el navegador (por defecto `http://localhost:5173`) y crear/editar apuntes desde la interfaz.
+
+4. Estructura principal de interés:
+
+- `src/pages/` — vistas de la app.
+- `src/components/` — componentes UI reutilizables.
+- `db/` — configuración y consultas de la base de datos.
+
+**Cómo colaborar**
+
+- Haz fork del repositorio y crea una rama por feature o bug: `feature/tu-mejora`.
+- Abre Pull Requests claros describiendo el propósito y cambios.
+- Añade tests o pasos para reproducir cambios cuando apliquen.
+- Mantén el estilo de TypeScript y formato del proyecto; ejecuta linters/formatters antes de PR.
+- Para cambios en la base de datos, incluye migraciones o instrucciones en `db/`.
+
+**Qué tipo de soluciones brinda**
+
+- Facilita la toma rápida de apuntes matemáticos con soporte para fórmulas y snippets.
+- Organiza contenidos por asignatura y permite búsquedas y reutilización de snippets.
+- Sirve como base para extensiones: exportación a PDF/LaTeX, sincronización en la nube o integración con plataformas educativas.
+
+Si quieres que añada una sección de instalación avanzada, ejemplos de uso o plantillas de PR, dímelo y lo incorporo.
+
+## Contribuir
+
+Consulta las normas de contribución y el formato de ramas en [CONTRIBUTING.md](CONTRIBUTING.md).
