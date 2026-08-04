@@ -8,6 +8,7 @@ import MathEditor from "./pages/mathEditor";
 import SubjectIndex from "./pages/subjectIndex";
 
 // Importamos tus consultas a Drizzle
+import { ClerkProvider } from "@clerk/react";
 import RootLayout from "./components/layout/rootLayout";
 import { getNoteBySlug, getNotesBySubject } from "./db/queries";
 
@@ -53,6 +54,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ClerkProvider publishableKey={import.meta.env.VITE_CLERK_PUBLISHABLE_KEY}>
+      <RouterProvider router={router} />
+    </ClerkProvider>
   </React.StrictMode>,
 );
