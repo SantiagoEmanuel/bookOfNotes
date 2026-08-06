@@ -1,5 +1,5 @@
+import { db } from "@/db/db";
 import { and, eq } from "drizzle-orm";
-import { db } from "../src/db/db";
 import { pages, subjects } from "./schema/schema";
 
 export async function getNotesBySubject(subjectName: string, userId: string) {
