@@ -27,9 +27,48 @@ export const MATH_SNIPPETS: RawSnippet[] = [
     documentation: "Raíz cuadrada",
   },
   {
+    label: "raiz_cubica",
+    insertText: "$\\sqrt[3]{${1:x}}$",
+    documentation: "Raíz cúbica",
+  },
+  {
     label: "raiz_n",
     insertText: "$\\sqrt[${1:n}]{${2:x}}$",
     documentation: "Raíz enésima",
+  },
+  {
+    label: "mas_menos",
+    insertText: "\\pm ",
+    documentation: "Más o menos (±)",
+  },
+
+  // ==========================================
+  // RELACIONES Y DESIGUALDADES
+  // ==========================================
+  {
+    label: "menor_igual",
+    insertText: "\\leq ",
+    documentation: "Menor o igual que (≤)",
+  },
+  {
+    label: "mayor_igual",
+    insertText: "\\geq ",
+    documentation: "Mayor o igual que (≥)",
+  },
+  {
+    label: "distinto",
+    insertText: "\\neq ",
+    documentation: "Distinto de (≠)",
+  },
+  {
+    label: "aproximado",
+    insertText: "\\approx ",
+    documentation: "Aproximadamente igual (≈)",
+  },
+  {
+    label: "equivale",
+    insertText: "\\equiv ",
+    documentation: "Equivalente o congruente (≡)",
   },
 
   // ==========================================
@@ -50,7 +89,7 @@ export const MATH_SNIPPETS: RawSnippet[] = [
     insertText: [
       "$$",
       "\\begin{pmatrix}",
-      "${1:a_{11}} & ${2:a_{12}} \\\\\\",
+      "${1:a_{11}} & ${2:a_{12}} \\\\",
       "${3:a_{21}} & ${4:a_{22}}",
       "\\end{pmatrix}",
       "$$",
@@ -62,8 +101,8 @@ export const MATH_SNIPPETS: RawSnippet[] = [
     insertText: [
       "$$",
       "\\begin{pmatrix}",
-      "${1:a_{11}} & ${2:a_{12}} & ${3:a_{13}} \\\\\\",
-      "${4:a_{21}} & ${5:a_{22}} & ${6:a_{23}} \\\\\\",
+      "${1:a_{11}} & ${2:a_{12}} & ${3:a_{13}} \\\\",
+      "${4:a_{21}} & ${5:a_{22}} & ${6:a_{23}} \\\\",
       "${7:a_{31}} & ${8:a_{32}} & ${9:a_{33}}",
       "\\end{pmatrix}",
       "$$",
@@ -75,8 +114,8 @@ export const MATH_SNIPPETS: RawSnippet[] = [
     insertText: [
       "$$",
       "\\begin{vmatrix}",
-      "${1:a_{11}} & ${2:a_{12}} & ${3:a_{13}} \\\\\\",
-      "${4:a_{21}} & ${5:a_{22}} & ${6:a_{23}} \\\\\\",
+      "${1:a_{11}} & ${2:a_{12}} & ${3:a_{13}} \\\\",
+      "${4:a_{21}} & ${5:a_{22}} & ${6:a_{23}} \\\\",
       "${7:a_{31}} & ${8:a_{32}} & ${9:a_{33}}",
       "\\end{vmatrix}",
       "$$",
@@ -191,11 +230,35 @@ export const MATH_SNIPPETS: RawSnippet[] = [
     documentation: "Intersección de conjuntos",
   },
   {
+    label: "tal_que",
+    insertText: "\\mid ",
+    documentation: "Tal que (|)",
+  },
+  {
     label: "implica",
     insertText: "\\implies ",
-    documentation: "Implica (flecha doble)",
+    documentation: "Implica / Entonces (⇒)",
   },
-  { label: "si_solo_si", insertText: "\\iff ", documentation: "Si y solo si" },
+  {
+    label: "si_solo_si",
+    insertText: "\\iff ",
+    documentation: "Si y solo si (⇔)",
+  },
+  {
+    label: "y_logico",
+    insertText: "\\land ",
+    documentation: "Y lógico / Conjunción (∧)",
+  },
+  {
+    label: "o_logico",
+    insertText: "\\lor ",
+    documentation: "O lógico / Disyunción (∨)",
+  },
+  {
+    label: "negacion",
+    insertText: "\\neg ",
+    documentation: "Negación lógica (¬)",
+  },
 
   // ==========================================
   // LETRAS GRIEGAS Y CONSTANTES
@@ -206,11 +269,6 @@ export const MATH_SNIPPETS: RawSnippet[] = [
     documentation: "Letra griega alpha",
   },
   { label: "beta", insertText: "\\beta", documentation: "Letra griega beta" },
-  {
-    label: "equivale",
-    insertText: "≡\\{${1:}\\}",
-    documentation: "Signo de equivalencia",
-  },
   {
     label: "gamma",
     insertText: "\\gamma",
@@ -259,7 +317,7 @@ export const MATH_SNIPPETS: RawSnippet[] = [
   // ==========================================
   {
     label: "listNum",
-    insertText: ["1. 1:"].join(","),
+    insertText: "1. ${1:item}",
     documentation: "Listado enumerado",
   },
 ];
