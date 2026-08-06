@@ -1,7 +1,5 @@
 import { Header } from "@/components/header";
-import { getMaterias } from "@/db/queries";
-import { getCurrentUserId } from "@/utils/clerk";
-import { ClerkProvider, SignInButton, UserButton } from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -15,9 +13,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const userId = await getCurrentUserId();
-  const subjects = userId ? await getMaterias(userId) : [];
-
   return (
     <html lang="es" className="h-full antialiased">
       <body className="min-h-full flex bg-background text-text-primary gap-2 p-4">
@@ -27,12 +22,7 @@ export default async function RootLayout({
             cssLayerName: "clerk",
           }}
         >
-          <Header
-            subjects={subjects}
-            className="flex justify-end items-center p-4 gap-4 rounded-3xl"
-          >
-            {userId ? <UserButton /> : <SignInButton />}
-          </Header>
+          <Header className="flex justify-end items-center p-4 gap-4 rounded-3xl"></Header>
           <main className="bg-background flex-1">{children}</main>
         </ClerkProvider>
       </body>
