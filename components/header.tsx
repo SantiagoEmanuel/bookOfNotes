@@ -1,9 +1,9 @@
 "use client";
 
-import { createSubjectAction } from "@/app/actions/subjects";
 import { api } from "@/utils/api";
 import { SignInButton, useAuth, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
+import { redirect, RedirectType } from "next/navigation";
 import { useEffect, useState } from "react";
 
 interface Subject {
@@ -24,6 +24,17 @@ export function Header({ className = "" }: HeaderProps) {
     if (!userId) return;
     api.subjects.all().then((data) => setSubjects(data));
   }, [userId]);
+
+  const handleCreateSubject = (formData: FormData) => {
+    const rawSubject = formData.get("subject");
+    const normalizeSubject =
+      typeof rawSubject === "string"
+        ? rawSubject.trim().replace(/\s+/g, "_")
+        : "";
+    api.subjects
+      .create(normalizeSubject)
+      .then(() => redirect(`${normalizeSubject}`, RedirectType.replace));
+  };
 
   return (
     <aside
@@ -204,7 +215,7 @@ export function Header({ className = "" }: HeaderProps) {
           p-3
         "
       >
-        <form action={createSubjectAction} className="space-y-2">
+        <form action={handleCreateSubject} className="space-y-2">
           <input
             type="text"
             name="subject"
