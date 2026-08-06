@@ -207,6 +207,11 @@ export const MATH_SNIPPETS: RawSnippet[] = [
   },
   { label: "beta", insertText: "\\beta", documentation: "Letra griega beta" },
   {
+    label: "equivale",
+    insertText: "≡\\{${1:}\\}",
+    documentation: "Signo de equivalencia",
+  },
+  {
     label: "gamma",
     insertText: "\\gamma",
     documentation: "Letra griega gamma",
