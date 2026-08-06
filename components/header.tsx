@@ -1,21 +1,29 @@
 "use client";
 
 import { createSubjectAction } from "@/app/actions/subjects";
+import { getMaterias } from "@/db/queries";
+import { SignInButton, useAuth, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
-import { ReactNode, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Subject {
   subject: string;
 }
 
 interface HeaderProps {
-  children?: ReactNode;
   className?: string;
-  subjects: Subject[];
 }
 
-export function Header({ children, className = "", subjects }: HeaderProps) {
+export function Header({ className = "" }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(true);
+  const [subjects, setSubjects] = useState<Subject[]>([]);
+
+  const { userId } = useAuth();
+
+  useEffect(() => {
+    if (!userId) return;
+    getMaterias(userId).then((data) => setSubjects(data));
+  }, [userId]);
 
   return (
     <aside
@@ -58,7 +66,7 @@ export function Header({ children, className = "", subjects }: HeaderProps) {
             ${isOpen ? "w-auto opacity-100" : "w-0 opacity-0"}
           `}
         >
-          {children}
+          {userId ? <UserButton /> : <SignInButton />}
         </div>
 
         {/* Botón */}
