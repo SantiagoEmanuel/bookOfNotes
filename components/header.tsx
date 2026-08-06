@@ -35,7 +35,9 @@ export function Header({ className = "" }: HeaderProps) {
         : "";
     api.subjects
       .create(normalizeSubject)
-      .then(() => redirect(`${normalizeSubject}`, RedirectType.replace));
+      .then(() =>
+        redirect(`materias/${normalizeSubject}`, RedirectType.replace),
+      );
   };
 
   return (
