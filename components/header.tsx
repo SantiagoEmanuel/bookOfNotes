@@ -25,6 +25,8 @@ export function Header({ className = "" }: HeaderProps) {
     api.subjects.all().then((data) => setSubjects(data));
   }, [userId]);
 
+  if (!userId) return;
+
   const handleCreateSubject = (formData: FormData) => {
     const rawSubject = formData.get("subject");
     const normalizeSubject =
@@ -61,6 +63,7 @@ export function Header({ className = "" }: HeaderProps) {
           h-16
           shrink-0
           items-center
+          w-full
           border-b
           border-border
           px-3
@@ -148,16 +151,16 @@ export function Header({ className = "" }: HeaderProps) {
             Materias
           </div>
 
-          <ul className="space-y-1">
+          <div className="flex flex-col gap-2">
             {subjects.map(({ subject }) => {
               const label = subject.replaceAll("_", " ");
 
               return (
-                <li key={subject}>
-                  <Link
-                    href={`/materia/${encodeURIComponent(subject)}`}
-                    title={!isOpen ? label : undefined}
-                    className={`
+                <Link
+                  key={subject}
+                  href={`/materia/${encodeURIComponent(subject)}`}
+                  title={!isOpen ? label : undefined}
+                  className={`
                       group
                       flex
                       items-center
@@ -169,12 +172,12 @@ export function Header({ className = "" }: HeaderProps) {
                       transition-colors
                       hover:bg-surface-secondary
                       hover:text-text-primary
-                      ${isOpen ? "gap-3 px-3" : "justify-center px-2"}
+                      ${isOpen ? "gap-3 px-3" : "justify-center"}
                     `}
-                  >
-                    {/* Indicador */}
-                    <span
-                      className="
+                >
+                  {/* Indicador */}
+                  <span
+                    className="
                         h-2
                         w-2
                         shrink-0
@@ -183,26 +186,25 @@ export function Header({ className = "" }: HeaderProps) {
                         transition-colors
                         group-hover:bg-primary-600
                       "
-                      aria-hidden="true"
-                    />
+                    aria-hidden="true"
+                  />
 
-                    {/* Nombre */}
-                    <span
-                      className={`
+                  {/* Nombre */}
+                  <span
+                    className={`
                         truncate
                         capitalize
                         transition-all
                         duration-200
                         ${isOpen ? "w-auto opacity-100" : "w-0 opacity-0"}
                       `}
-                    >
-                      {label}
-                    </span>
-                  </Link>
-                </li>
+                  >
+                    {label}
+                  </span>
+                </Link>
               );
             })}
-          </ul>
+          </div>
         </nav>
       </div>
 
