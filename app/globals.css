@@ -1,26 +1,146 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /*
+   * =========================================================
+   * BASE
+   * =========================================================
+   */
+
+  --color-background: #f5f6f3;
+  --color-foreground: #263238;
+
+  --color-surface: #fcfcfa;
+  --color-surface-secondary: #eef1ef;
+
+  /*
+   * =========================================================
+   * TEXT
+   * =========================================================
+   */
+
+  --color-text-primary: #263238;
+  --color-text-secondary: #59666b;
+  --color-text-muted: #7a8589;
+  --color-text-disabled: #a7b0b2;
+
+  /*
+   * =========================================================
+   * BORDERS
+   * =========================================================
+   */
+
+  --color-border: #dce2df;
+  --color-border-strong: #cbd4d1;
+
+  /*
+   * =========================================================
+   * PRIMARY / ACCENT
+   * =========================================================
+   *
+   * Teal desaturado:
+   * suficientemente distintivo para navegación y acciones,
+   * pero mucho menos agresivo que un azul saturado.
+   */
+
+  --color-primary-50: #f0f7f6;
+  --color-primary-100: #e3f0ef;
+  --color-primary-200: #c9e2e0;
+  --color-primary-300: #a5ccca;
+  --color-primary-400: #78aaa9;
+  --color-primary-500: #579394;
+  --color-primary-600: #397f82;
+  --color-primary-700: #2f6c6f;
+  --color-primary-800: #29575a;
+  --color-primary-900: #25494b;
+
+  /*
+   * =========================================================
+   * SEMANTIC
+   * =========================================================
+   */
+
+  --color-success: #477a62;
+  --color-success-soft: #e8f1ec;
+
+  --color-warning: #9a7438;
+  --color-warning-soft: #f5eedf;
+
+  --color-danger: #a95757;
+  --color-danger-soft: #f5e7e7;
+
+  /*
+   * =========================================================
+   * EDITOR
+   * =========================================================
+   */
+
+  --color-editor: #fafaf7;
+  --color-editor-code: #eff2f0;
+
+  /*
+   * =========================================================
+   * CODE / SYNTAX
+   * =========================================================
+   */
+
+  --color-code-text: #344449;
+  --color-code-border: #d9dfdd;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+h1 {
+  font-size: 24px;
+  font: bold;
+}
+h2 {
+  font-size: 18px;
+  font: bold;
+}
+h3 {
+  font-size: 16px;
+}
+h4,
+h5 {
+  font-size: 14px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+span.katex {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  padding: 8px 8px;
+  height: auto;
+}
+
+/* Protegemos las matemáticas de los estilos globales de Tailwind */
+.katex-display {
+  margin: 1em 0;
+}
+
+.katex {
+  /* Forzamos a que KaTeX use su propio line-height y no herede el de Tailwind */
+  line-height: normal !important;
+}
+
+ul {
+  list-style: disc;
+  padding-left: 16px;
+
+  li {
+    margin: 14px 0;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+ol {
+  list-style: decimal;
+  padding-left: 16px;
+
+  li {
+    margin: 14px 0;
+  }
+}
+
+/* Tailwind resetea los bordes por defecto, lo que a veces hace desaparecer o mover la barra de fracción de KaTeX */
+.katex-frac-line {
+  border-bottom-width: 1px !important;
+  border-bottom-style: solid !important;
 }

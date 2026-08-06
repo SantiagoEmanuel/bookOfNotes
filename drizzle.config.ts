@@ -1,15 +1,11 @@
-import { config } from "dotenv";
 import { defineConfig } from "drizzle-kit";
-import { TURSO_TOKEN, TURSO_URL } from "./src/constants/env";
-
-config();
+import { TURSO_TOKEN, TURSO_URL } from "./env";
 
 export default defineConfig({
   dialect: "turso",
   dbCredentials: {
-    url: TURSO_URL!,
-    authToken: TURSO_TOKEN!,
+    url: TURSO_URL,
+    authToken: TURSO_TOKEN,
   },
-  schema: "./src/db/schema/schema.ts",
-  out: "./src/db/generate/",
+  schema: "./db/schema",
 });
