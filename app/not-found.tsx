@@ -5,7 +5,7 @@ import { ArrowLeft, LayoutDashboard, LifeBuoy } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
-export function NotFoundView() {
+export default function NotFond() {
   const router = useRouter();
   const pathname = usePathname();
 
