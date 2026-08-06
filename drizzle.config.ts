@@ -1,11 +1,10 @@
 import { defineConfig } from "drizzle-kit";
-import { TURSO_TOKEN, TURSO_URL } from "./env";
 
 export default defineConfig({
   dialect: "turso",
   dbCredentials: {
-    url: TURSO_URL,
-    authToken: TURSO_TOKEN,
+    url: process.env.TURSO_URL!,
+    authToken: process.env.TURSO_TOKEN,
   },
   schema: "./db/schema",
 });
