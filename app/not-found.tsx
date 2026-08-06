@@ -67,7 +67,7 @@ export default function NotFond() {
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
           <Link
-            href="/dashboard"
+            href="/"
             className={buttonVariants({
               size: "lg",
               className: "w-full sm:w-auto",
