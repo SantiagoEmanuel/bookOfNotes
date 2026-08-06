@@ -1,6 +1,7 @@
 import { getMaterias } from "@/db/queries";
 import { getCurrentUserId } from "@/utils/clerk";
 import Link from "next/link";
+import { redirect, RedirectType } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
@@ -8,16 +9,7 @@ export default async function HomeIndex() {
   const userId = await getCurrentUserId();
 
   if (!userId) {
-    return (
-      <div className="p-8">
-        <h1 className="text-3xl font-bold text-text-primary">
-          Panel de estudio
-        </h1>
-        <p className="mt-2 text-text-secondary">
-          Inicia sesión para ver y gestionar tus apuntes.
-        </p>
-      </div>
-    );
+    return redirect("/auth", RedirectType.replace)
   }
 
   const subjects = await getMaterias(userId);
