@@ -1,7 +1,7 @@
 "use client";
 
 import { createSubjectAction } from "@/app/actions/subjects";
-import { getMaterias } from "@/db/queries";
+import { api } from "@/utils/api";
 import { SignInButton, useAuth, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -22,7 +22,7 @@ export function Header({ className = "" }: HeaderProps) {
 
   useEffect(() => {
     if (!userId) return;
-    getMaterias(userId).then((data) => setSubjects(data));
+    api.subjects.all().then((data) => setSubjects(data));
   }, [userId]);
 
   return (
