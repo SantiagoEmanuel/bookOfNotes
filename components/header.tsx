@@ -43,9 +43,10 @@ export function Header({ className = "" }: HeaderProps) {
   return (
     <aside
       className={`
-        relative
+        sticky
+        top-4
         flex
-        h-dvh
+        h-full
         shrink-0
         flex-col
         border
@@ -139,7 +140,6 @@ export function Header({ className = "" }: HeaderProps) {
             className={`
               mb-2
               overflow-hidden
-              px-2
               text-xs
               font-semibold
               uppercase
@@ -174,7 +174,7 @@ export function Header({ className = "" }: HeaderProps) {
                       transition-colors
                       hover:bg-surface-secondary
                       hover:text-text-primary
-                      ${isOpen ? "gap-3 px-3" : "justify-center"}
+                      ${isOpen ? "gap-3 px-3" : "justify-center px-0"}
                     `}
                 >
                   {/* Indicador */}
